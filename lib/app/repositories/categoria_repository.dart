@@ -7,7 +7,7 @@ class CategoriaRepository {
 
   Future<List<CategoriaModel>> getAll() async {
     final response = await httpManager.request(
-      url: "https://ilearn.appke.com.br/api/categories",
+      url: "https://catalog.appke.com.br/api/categories",
       method: HttpMethods.get,
     );
 

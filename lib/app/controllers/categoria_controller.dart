@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import '../models/categoria_model.dart';
 import '../repositories/categoria_repository.dart';
 
-class CategoryController extends GetxController {
+class CategoriaController extends GetxController {
   final repository = CategoriaRepository();
 
   RxList<CategoriaModel> listCategories = RxList<CategoriaModel>([]);

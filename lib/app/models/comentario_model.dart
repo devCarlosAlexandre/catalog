@@ -6,4 +6,4 @@ class Comentario{
   String? texto; 
   UserModel? user;
   ProdutoModel?produto;
-}
+} 
