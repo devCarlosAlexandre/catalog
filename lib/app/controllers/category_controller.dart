@@ -1,17 +1,17 @@
 import 'package:get/get.dart';
 
-import '../models/category_model.dart';
-import '../repositories/category_repository.dart';
+import '../models/categoria_model.dart';
+import '../repositories/categoria_repository.dart';
 
 class CategoryController extends GetxController {
-  final repository = CategoryRepository();
+  final repository = CategoriaRepository();
 
-  RxList<CategoryModel> listCategories = RxList<CategoryModel>([]);
+  RxList<CategoriaModel> listCategories = RxList<CategoriaModel>([]);
   RxBool isLoading = false.obs;
 
   Future getCategories() async {
     isLoading.value = true;
-    List<CategoryModel> result = await repository.getAll();
+    List<CategoriaModel> result = await repository.getAll();
     if (result.isNotEmpty) {
       listCategories.assignAll(result);
     } else {

@@ -2,7 +2,7 @@ import 'package:catalog/app/core/services/http_manager.dart';
 
 import '../models/categoria_model.dart';
 
-class CategoryRepository {
+class CategoriaRepository {
   HttpManager httpManager = HttpManager();
 
   Future<List<CategoriaModel>> getAll() async {
