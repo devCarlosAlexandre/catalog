@@ -10,7 +10,7 @@ class ProdutoModel{
   String? valor; 
   String? imagem; 
 
-  List<Comentario> Comentario;
+  //List<Comentario> comentario;
 
 
 }

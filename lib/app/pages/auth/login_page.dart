@@ -3,11 +3,10 @@ import 'package:get/get.dart';
 
 import '../../core/config/app_colors.dart';
 import '../../controllers/auth_controller.dart';
-import '../../core/services/validators.dart';
-import '../../core/widgets/text_field_widget.dart';
 
-class SignInPage extends StatelessWidget {
-  SignInPage({Key? key}) : super(key: key);
+
+class LoginPage extends StatelessWidget {
+  LoginPage({Key? key}) : super(key: key);
 
   final _formKey = GlobalKey<FormState>();
   final emailTExtController = TextEditingController();
@@ -63,21 +62,7 @@ class SignInPage extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
                           // Email
-                          TextFieldWidget(
-                            controller: emailTExtController,
-                            icon: Icons.email,
-                            label: 'Email',
-                            validator: emailValidator,
-                          ),
-
-                          // Senha
-                          TextFieldWidget(
-                            controller: passwordTExtController,
-                            icon: Icons.lock,
-                            label: 'Senha',
-                            isSecret: true,
-                            validator: passwordValidator,
-                          ),
+                         
 
                           // Botão de entrar
                           SizedBox(
