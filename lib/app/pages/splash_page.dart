@@ -22,7 +22,7 @@ class SplashPage extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Image.asset("assets/img/LogoCatalog.png", width: 250),
+            Image.asset("assets/img/LogoTransparente.png", width: 250),
             const SizedBox(height: 10),
             const CircularProgressIndicator(
               valueColor: AlwaysStoppedAnimation(Colors.white),

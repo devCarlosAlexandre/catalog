@@ -3,6 +3,8 @@ import 'package:get/get.dart';
 
 import '../../core/config/app_colors.dart';
 import '../../controllers/auth_controller.dart';
+import '../../core/services/validators.dart';
+import '../../core/widgets/text_field_widget.dart';
 
 
 class LoginPage extends StatelessWidget {
@@ -39,7 +41,7 @@ class LoginPage extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset("assets/img/ilearn-logo-branca.png", scale: 1.5),
+                      Image.asset("assets/img/LogoTransparente.png", scale: 1.5),
                     ],
                   ),
                 ),
@@ -61,7 +63,22 @@ class LoginPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                          // Email
+                           //Email 
+                           TextFieldWidget(
+                            controller: emailTExtController,
+                            icon: Icons.email,
+                            label: 'Email',
+                            validator: emailValidator,
+                          ), 
+
+                          // Senha
+                          TextFieldWidget(
+                            controller: passwordTExtController,
+                            icon: Icons.lock,
+                            label: 'Senha',
+                            isSecret: true,
+                            validator: passwordValidator,
+                          ),
                          
 
                           // Botão de entrar
