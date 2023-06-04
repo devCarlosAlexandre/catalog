@@ -26,7 +26,7 @@ abstract class AppPages {
     ),
     GetPage(
       name: AppRoutes.home,
-      page: () => const HomePage(),
+      page: () =>  HomePage(),
     ),
   ];
 }
