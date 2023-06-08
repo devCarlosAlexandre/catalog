@@ -1,11 +1,11 @@
+import 'package:catalog/app/pages/profile/profile_page.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
+import '../core/config/app_colors.dart';
 import 'categoria/categoria_page.dart';
 import 'comentario/comentario_page.dart';
 import 'home/home_page.dart';
-import 'profile/profile_page.dart';
-
-import '../core/config/app_colors.dart';
 
 class BasePage extends StatefulWidget {
   const BasePage({Key? key}) : super(key: key);
@@ -25,11 +25,11 @@ class _BasePageState extends State<BasePage> {
         body: PageView(
           physics: const NeverScrollableScrollPhysics(),
           controller: pageController,
-          children: const [
-            //HomePage(),
-            ComentarioPage(),
-            //CategoriaPage(),
-            ProfilePage(),
+          children: [
+            HomePage(),
+            const ComentarioPage(),
+           CategoriaPage(),
+            const ProfilePage(),
           ],
         ),
         bottomNavigationBar: BottomNavigationBar(

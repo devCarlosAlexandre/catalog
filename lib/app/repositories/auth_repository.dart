@@ -13,7 +13,6 @@ class AuthRepository {
     required this.appUtils,
   });
 
-  //Fazer login na api
   Future<ApiResult<UserModel>> signIn({required String email, required String password}) async {
     const String endpoint = "${Url.base}/login";
 
@@ -37,7 +36,6 @@ class AuthRepository {
     }
   }
 
-  // Criar uma noca conta de usuario
   Future<ApiResult<UserModel>> signUp(UserModel user) async {
     const String endpoint = "${Url.base}/register";
 

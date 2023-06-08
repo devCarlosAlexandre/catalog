@@ -5,7 +5,7 @@ import '../models/categoria_model.dart';
 class CategoriaRepository {
   HttpManager httpManager = HttpManager();
 
-  Future<List<CategoriaModel>> getAll() async {
+  Future<List<CategoriaModel>> getAll(String s) async {
     final response = await httpManager.request(
       url: "https://catalog.appke.com.br/api/categories",
       method: HttpMethods.get,

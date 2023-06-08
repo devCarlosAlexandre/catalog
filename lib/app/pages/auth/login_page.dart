@@ -1,11 +1,16 @@
+
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
+import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
 
-import '../../core/config/app_colors.dart';
 import '../../controllers/auth_controller.dart';
+import '../../core/config/app_colors.dart';
+import '../../core/routes/app_routes_pages.dart';
 import '../../core/services/validators.dart';
 import '../../core/widgets/text_field_widget.dart';
-
 
 class LoginPage extends StatelessWidget {
   LoginPage({Key? key}) : super(key: key);
@@ -41,7 +46,7 @@ class LoginPage extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset("assets/img/LogoTransparente.png", scale: 1.5),
+                      Image.asset("assets/images/ilearn-logo-branca.png", scale: 2.5),
                     ],
                   ),
                 ),
@@ -63,13 +68,13 @@ class LoginPage extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.stretch,
                         children: [
-                           //Email 
-                           TextFieldWidget(
+                          // Email
+                          TextFieldWidget(
                             controller: emailTExtController,
                             icon: Icons.email,
                             label: 'Email',
                             validator: emailValidator,
-                          ), 
+                          ),
 
                           // Senha
                           TextFieldWidget(
@@ -79,7 +84,6 @@ class LoginPage extends StatelessWidget {
                             isSecret: true,
                             validator: passwordValidator,
                           ),
-                         
 
                           // Botão de entrar
                           SizedBox(
@@ -115,6 +119,51 @@ class LoginPage extends StatelessWidget {
                         ],
                       ),
                     ),
+                  ),
+                ),
+
+                // Divisor
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: Divider(
+                          color: Colors.grey.withAlpha(90),
+                          thickness: 2,
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15),
+                        child: Text('Ou', style: TextStyle(color: Colors.white)),
+                      ),
+                      Expanded(
+                        child: Divider(
+                          color: Colors.grey.withAlpha(90),
+                          thickness: 2,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+
+                // Botão criar conta
+                SizedBox(
+                  height: 50,
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(18),
+                      ),
+                      side: const BorderSide(
+                        width: 2,
+                        color: Colors.white,
+                      ),
+                    ),
+                    onPressed: () {
+                      Get.toNamed(AppRoutes.register);
+                    },
+                    child: const Text('Criar uma conta', style: TextStyle(fontSize: 18, color: Colors.white)),
                   ),
                 ),
               ],
