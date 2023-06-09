@@ -60,7 +60,7 @@ class HomePage extends StatelessWidget {
                           Icons.category,
                           size: 45,
                         ),
-                        Text('Category',
+                        Text('Categoria',
                             style: TextStyle(
                                 fontSize: 18, fontWeight: FontWeight.bold)),
                       ],
