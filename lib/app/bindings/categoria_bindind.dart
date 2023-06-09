@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../controllers/categorias_controller.dart';
+import '../controllers/categoria_controller.dart';
 
 class CategoriaBinding extends Bindings {
   @override

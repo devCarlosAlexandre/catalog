@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/categorias_controller.dart';
+import '../../controllers/categoria_controller.dart';
 
 class CategoriaPage extends StatelessWidget {
   CategoriaPage({super.key});
-  final controller = Get.put(CategoriaController());
+  final CategoriaController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {

@@ -1,3 +1,4 @@
+import 'package:catalog/app/pages/user/user_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -25,7 +26,7 @@ class HomePage extends StatelessWidget {
                   width: 110,
                   child: ElevatedButton(
                     onPressed: () {
-                    //Get.to(UserPage());
+                    Get.to(UserPage());
                     },
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.center,
