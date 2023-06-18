@@ -1,4 +1,5 @@
 
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/Produto_model.dart';
@@ -34,5 +35,8 @@ class ProdutoWidget extends StatelessWidget {
     );
   }
   
-  CachedNetworkImage({required String imageUrl, required CircularProgressIndicator Function(dynamic context, dynamic url, dynamic downloadProgress) progressIndicatorBuilder, required Icon Function(dynamic context, dynamic url, dynamic error) errorWidget}) {}
-}
+  
+  
+  
+} 
+

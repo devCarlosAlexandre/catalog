@@ -73,7 +73,7 @@ class HttpManager {
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.TOP,
       timeInSecForIosWeb: 5,
-      backgroundColor: isError ? Colors.red : Colors.green,
+      backgroundColor: isError ? Color.fromARGB(255, 12, 11, 11) : Colors.green,
       textColor: isError ? Colors.white : Colors.black,
       fontSize: 18,
     );

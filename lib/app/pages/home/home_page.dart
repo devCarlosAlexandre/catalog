@@ -1,12 +1,8 @@
 import 'package:catalog/app/controllers/produto_controller.dart';
+import 'package:catalog/app/core/widgets/produto_widget.dart';
 import 'package:catalog/app/models/produto_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import '../../controllers/produto_controller.dart';
-import '../../core/widgets/produto_widget.dart';
-import '../../models/produto_model.dart';
-
 class HomePage extends StatelessWidget {
   HomePage({super.key});
 
@@ -36,7 +32,7 @@ class HomePage extends StatelessWidget {
                 itemBuilder: (BuildContext context, int index) {
                   ProdutoModel model = controller.listProduto[index];
 
-                  return ProdutoWidget(model: model);
+                 return ProdutoWidget(model: model);
                 },
               );
             }

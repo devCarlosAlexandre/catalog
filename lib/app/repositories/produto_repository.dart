@@ -8,7 +8,7 @@ class ProdutoRepository {
   final HttpManager httpManager;
 
   ProdutoRepository({
-    required this.httpManager,
+    required this.httpManager, required appUtils,
   });
 
   Future<ApiResult<List<ProdutoModel>>> getAll(String token) async {

@@ -1,5 +1,5 @@
-//import 'package:catalog/app/models/categoria_model.dart';
-//import 'package:catalog/app/models/comentario_model.dart';
+import 'package:catalog/app/models/categoria_model.dart';
+import 'package:catalog/app/models/comentario_model.dart';
 import 'dart:convert';
 
 class ProdutoModel{
@@ -40,7 +40,7 @@ class ProdutoModel{
       categoriaId: map['categoria_id'],
       name: map['name'],
       
-      imagem: map['photo_path'],
+      imagem: map['imagem'],
       
     );
   }

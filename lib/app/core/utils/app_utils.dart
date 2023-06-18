@@ -39,8 +39,8 @@ class AppUtils {
       toastLength: Toast.LENGTH_LONG,
       gravity: ToastGravity.TOP,
       timeInSecForIosWeb: 4,
-      backgroundColor: isError ? Colors.red : Colors.green,
-      textColor: isError ? Colors.white : Colors.black,
+      backgroundColor: isError ? Color.fromARGB(255, 8, 5, 5) : Colors.green,
+      textColor: isError ? Colors.white : Color.fromARGB(255, 255, 255, 255),
       fontSize: 18,
     );
   }
