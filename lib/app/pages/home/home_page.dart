@@ -1,78 +1,48 @@
-import 'package:catalog/app/pages/user/user_page.dart';
+import 'package:catalog/app/controllers/produto_controller.dart';
+import 'package:catalog/app/models/produto_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../categoria/categoria_page.dart';
-import '../profile/profile_page.dart';
+import '../../controllers/produto_controller.dart';
+import '../../core/widgets/produto_widget.dart';
+import '../../models/produto_model.dart';
 
-class HomePage extends StatelessWidget { 
-  const HomePage({super.key}); 
+class HomePage extends StatelessWidget {
+  HomePage({super.key});
+
+  final GlobalKey<RefreshIndicatorState> _refreshIndicatorKey = GlobalKey<RefreshIndicatorState>();
+  final ProdutoController controller = Get.find();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Home Page'),
+        title: const Text('Home Page'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                SizedBox(
-                  height: 110,
-                  width: 110,
-                  child: ElevatedButton(
-                    onPressed: () {
-                    Get.to(UserPage());
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          Icons.person,
-                          size: 45,
-                        ),
-                        Text(
-                          'Profile',
-                          style: TextStyle(
-                              fontSize: 18, fontWeight: FontWeight.bold),
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                SizedBox(
-                  height: 110,
-                  width: 110,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      Get.to(CategoriaPage());
-                    },
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          Icons.category,
-                          size: 45,
-                        ),
-                        Text('Categoria',
-                            style: TextStyle(
-                                fontSize: 18, fontWeight: FontWeight.bold)),
-                      ],
-                    ),
-                  ),
-                ),
-              ],
-            )
-          ],
+      body: RefreshIndicator(
+        key: _refreshIndicatorKey,
+        onRefresh: () async {
+          controller.getProdutos();
+        },
+        child: GetX<ProdutoController>(
+          init: controller,
+          builder: (controller) {
+            if (controller.isLoading.value == true) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return ListView.builder(
+                physics: const BouncingScrollPhysics(),
+                itemCount: controller.listProduto.length,
+                itemBuilder: (BuildContext context, int index) {
+                  ProdutoModel model = controller.listProduto[index];
+
+                  return ProdutoWidget(model: model);
+                },
+              );
+            }
+          },
         ),
       ),
     );
-  }
+  } 
 }

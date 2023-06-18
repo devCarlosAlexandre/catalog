@@ -1,10 +1,11 @@
 import 'package:get/get.dart';
+import 'package:get/get_core/src/get_main.dart';
 
 import '../core/routes/app_routes_pages.dart';
-import '../models/user_model.dart';
-import '../repositories/auth_repository.dart';
 import '../core/utils/api_result.dart';
 import '../core/utils/app_utils.dart';
+import '../models/user_model.dart';
+import '../repositories/auth_repository.dart';
 
 class AuthController extends GetxController {
   final AuthRepository repository;
@@ -56,6 +57,9 @@ class AuthController extends GetxController {
 
   Future validateToke() async {
     String? token = await appUtils.getLocalData(key: 'user-token');
+
+    //Esperar 3 segundo com exibindo a splash
+    Future.delayed(const Duration(seconds: 3));
 
     if (token != null) {
       ApiResult<UserModel> result = await repository.validateToken(token);

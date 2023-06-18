@@ -1,3 +1,4 @@
+import 'package:catalog/app/models/categoria_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,24 +10,34 @@ class CategoriaPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    controller.getCategorias();
     return Scaffold(
-        appBar: AppBar(
-          title: const Text('Categoria'),
+      appBar: AppBar(
+        title: const Text('Categorias'),
+      ),
+      body: RefreshIndicator(
+        onRefresh: () async {
+          controller.getCategories();
+        },
+        child: GetX<CategoriaController>(
+          builder: (controller) {
+            if (controller.isLoading.value == true) {
+              return const Center(child: CircularProgressIndicator());
+            } else {
+              return ListView.separated(
+                physics: const BouncingScrollPhysics(),
+                separatorBuilder: (context, index) => const Divider(thickness: 1, indent: 16, endIndent: 16),
+                itemCount: controller.listCategories.length,
+                itemBuilder: (BuildContext context, int index) {
+                  CategoriaModel model = controller.listCategories[index];
+                  return ListTile(
+                    title: Text("${model.name}", style: const TextStyle(fontWeight: FontWeight.w600)),
+                  );
+                },
+              );
+            }
+          },
         ),
-        body: Obx(() {
-          if (controller.isLoading.value) {
-            return const Center(child: CircularProgressIndicator());
-          } else {
-            return ListView.builder(
-              itemBuilder: (context, index) => Card(
-                  child: ListTile(
-                      title: Text(
-                controller.listCategorias[index].name ?? "",
-              ))),
-              itemCount: controller.listCategorias.length,
-            );
-          }
-        }));
+      ),
+    );
   }
 }

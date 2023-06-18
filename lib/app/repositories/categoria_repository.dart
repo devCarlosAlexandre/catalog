@@ -1,39 +1,58 @@
 import 'package:catalog/app/core/services/http_manager.dart';
+import 'package:catalog/app/core/utils/api_result.dart';
+import 'package:catalog/app/core/utils/urls.dart';
 
 import '../models/categoria_model.dart';
 
 class CategoriaRepository {
-  HttpManager httpManager = HttpManager();
+  final HttpManager httpManager;
 
-  Future<List<CategoriaModel>> getAll() async {
+  CategoriaRepository({
+    required this.httpManager,
+  });
+
+  Future<ApiResult<List<CategoriaModel>>> getAll(String token) async {
+    const String endpoint = "${Url.base}/categories";
+
     final response = await httpManager.request(
-      url: "https://catalog.appke.com.br/api/categories",
+      url: endpoint,
       method: HttpMethods.get,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
     );
 
     if (response['data'] != null) {
       List list = response['data'];
 
-      List<CategoriaModel> categoryList = CategoriaModel.fromList(list);
+      List<CategoriaModel> categoriaList = CategoriaModel.fromList(list);
 
-      return categoryList;
+      return ApiResult<List<CategoriaModel>>(data: categoriaList);
     } else {
-      return [];
+      String message = response['error'] ?? "Não foi possível buscar as categorias. Tente novamente!";
+      return ApiResult<List<CategoriaModel>>(message: message, isError: true);
     }
   }
 
-  Future<CategoriaModel> getById(int id) async {
+  Future<ApiResult<CategoriaModel>> getById(String token, int id) async {
+    String endpoint = "${Url.base}/categories/$id";
+
     CategoriaModel model = CategoriaModel();
 
     final response = await httpManager.request(
-      url: "https://catalog.appke.com.br/api/categories/$id",
+      url: endpoint,
       method: HttpMethods.get,
+      headers: {
+        'Authorization': 'Bearer $token',
+      },
     );
 
     if (response['data'] != null) {
       model = CategoriaModel.fromJson(response['data']);
+      return ApiResult<CategoriaModel>(data: model);
+    } else {
+      String message = response['error'] ?? "Não foi possível buscar a categoria. Tente novamente!";
+      return ApiResult<CategoriaModel>(message: message, isError: true);
     }
-
-    return model;
   }
 }
