@@ -1,10 +1,5 @@
-
-
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_state_manager/src/rx_flutter/rx_getx_widget.dart';
 
 import '../../controllers/auth_controller.dart';
 import '../../core/config/app_colors.dart';
@@ -46,7 +41,8 @@ class LoginPage extends StatelessWidget {
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Image.asset("assets/images/ilearn-logo-branca.png", scale: 2.5),
+                      Image.asset("assets/img/LogoTransparente.png",
+                          scale: 2.5),
                     ],
                   ),
                 ),
@@ -102,13 +98,17 @@ class LoginPage extends StatelessWidget {
                                         FocusScope.of(context).unfocus();
 
                                         if (_formKey.currentState!.validate()) {
-                                          String email = emailTExtController.text;
-                                          String password = passwordTExtController.text;
-                                          controller.signIn(email: email, password: password);
+                                          String email =
+                                              emailTExtController.text;
+                                          String password =
+                                              passwordTExtController.text;
+                                          controller.signIn(
+                                              email: email, password: password);
                                         }
                                       },
                                 child: controller.isLoading.value == true
-                                    ? const CircularProgressIndicator(backgroundColor: Colors.white)
+                                    ? const CircularProgressIndicator(
+                                        backgroundColor: Colors.white)
                                     : const Text(
                                         'ENTRAR',
                                         style: TextStyle(fontSize: 18),
@@ -135,7 +135,8 @@ class LoginPage extends StatelessWidget {
                       ),
                       const Padding(
                         padding: EdgeInsets.symmetric(horizontal: 15),
-                        child: Text('Ou', style: TextStyle(color: Colors.white)),
+                        child:
+                            Text('Ou', style: TextStyle(color: Colors.white)),
                       ),
                       Expanded(
                         child: Divider(
@@ -163,7 +164,8 @@ class LoginPage extends StatelessWidget {
                     onPressed: () {
                       Get.toNamed(AppRoutes.register);
                     },
-                    child: const Text('Criar uma conta', style: TextStyle(fontSize: 18, color: Colors.white)),
+                    child: const Text('Criar uma conta',
+                        style: TextStyle(fontSize: 18, color: Colors.white)),
                   ),
                 ),
               ],

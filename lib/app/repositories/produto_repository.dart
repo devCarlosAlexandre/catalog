@@ -8,11 +8,11 @@ class ProdutoRepository {
   final HttpManager httpManager;
 
   ProdutoRepository({
-    required this.httpManager, required appUtils,
+    required this.httpManager,
   });
 
   Future<ApiResult<List<ProdutoModel>>> getAll(String token) async {
-    const String endpoint = "${Url.base}/Produtos";
+    const String endpoint = "${Url.base}/produto";
 
     final response = await httpManager.request(
       url: endpoint,
@@ -29,10 +29,12 @@ class ProdutoRepository {
 
       return ApiResult<List<ProdutoModel>>(data: listProdutos);
     } else {
-      String message = response['error'] ?? "Não foi possível buscar os produtos. Tente novamente!";
+      String message = response['error'] ??
+          "Não foi possível buscar os produtos. Tente novamente!";
       return ApiResult<List<ProdutoModel>>(message: message, isError: true);
     }
   }
+  
 
   Future<ApiResult<ProdutoModel>> getById(String token, int id) async {
     String endpoint = "${Url.base}/Produtos/$id";
@@ -51,7 +53,8 @@ class ProdutoRepository {
       model = ProdutoModel.fromJson(response['data']);
       return ApiResult<ProdutoModel>(data: model);
     } else {
-      String message = response['error'] ?? "Não foi possível buscar o produto. Tente novamente!";
+      String message = response['error'] ??
+          "Não foi possível buscar o produto. Tente novamente!";
       return ApiResult<ProdutoModel>(message: message, isError: true);
     }
   }

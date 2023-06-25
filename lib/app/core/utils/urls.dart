@@ -1,4 +1,4 @@
 abstract class Url {
-  static const base = "https://catalog.appke.com.br/api";
-  static const login = "https://catalog.appke.com.br/api/login";
+  static const base = "http://192.168.3.200:8000/api";
+  static const login = "http://192.168.3.200:8000/api/login";
 }

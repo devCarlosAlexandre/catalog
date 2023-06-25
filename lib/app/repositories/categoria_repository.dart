@@ -1,7 +1,6 @@
-import 'package:catalog/app/core/services/http_manager.dart';
-import 'package:catalog/app/core/utils/api_result.dart';
-import 'package:catalog/app/core/utils/urls.dart';
-
+import '../core/services/http_manager.dart';
+import '../core/utils/api_result.dart';
+import '../core/utils/urls.dart';
 import '../models/categoria_model.dart';
 
 class CategoriaRepository {
@@ -29,7 +28,8 @@ class CategoriaRepository {
 
       return ApiResult<List<CategoriaModel>>(data: categoriaList);
     } else {
-      String message = response['error'] ?? "Não foi possível buscar as categorias. Tente novamente!";
+      String message = response['error'] ??
+          "Não foi possível buscar as categorias. Tente novamente!";
       return ApiResult<List<CategoriaModel>>(message: message, isError: true);
     }
   }
@@ -51,7 +51,8 @@ class CategoriaRepository {
       model = CategoriaModel.fromJson(response['data']);
       return ApiResult<CategoriaModel>(data: model);
     } else {
-      String message = response['error'] ?? "Não foi possível buscar a categoria. Tente novamente!";
+      String message = response['error'] ??
+          "Não foi possível buscar a categoria. Tente novamente!";
       return ApiResult<CategoriaModel>(message: message, isError: true);
     }
   }

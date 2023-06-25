@@ -1,8 +1,13 @@
+import '../core/services/http_manager.dart';
 import '../models/user_model.dart';
-import '../services/http_manager.dart';
 
-class UserRepository {
-  HttpManager httpManager = HttpManager();
+class ProfileRepository {
+  final HttpManager httpManager;
+
+  ProfileRepository({
+    required this.httpManager,
+  });
+
   Future<List<UserModel>> getAll() async {
     final response = await httpManager.request(
       url: "https://Catalog.appke.com.br/api/users",

@@ -28,7 +28,7 @@ class HttpManager {
 
       return response.data;
     } on DioError catch (error) {
-      showToast(message: error.message, isError: true);
+      showToast(message: " error.message", isError: true);
       return error.response?.data ?? {};
     } catch (error) {
       showToast(message: error.toString(), isError: true);

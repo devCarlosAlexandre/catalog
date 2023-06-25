@@ -1,13 +1,19 @@
 import 'package:get/get.dart';
 
+import '../core/utils/app_utils.dart';
 import '../models/user_model.dart';
+import '../repositories/user_repository.dart';
 import 'auth_controller.dart';
 
 class ProfileController extends GetxController {
   final AuthController auth;
+  final ProfileRepository repository;
+  final AppUtils appUtils;
 
   ProfileController({
     required this.auth,
+    required this.repository,
+    required this.appUtils,
   });
 
   UserModel user = UserModel();

@@ -13,7 +13,8 @@ class AuthRepository {
     required this.appUtils,
   });
 
-  Future<ApiResult<UserModel>> signIn({required String email, required String password}) async {
+  Future<ApiResult<UserModel>> signIn(
+      {required String email, required String password}) async {
     const String endpoint = "${Url.base}/login";
 
     final response = await httpManager.request(
@@ -31,7 +32,8 @@ class AuthRepository {
 
       return ApiResult<UserModel>(data: user);
     } else {
-      String message = response['error'] ?? "Não foi possível fazer login. Tente novamente!";
+      String message =
+          response['error'] ?? "Não foi possível fazer login. Tente novamente!";
       return ApiResult<UserModel>(message: message, isError: true);
     }
   }
@@ -41,6 +43,7 @@ class AuthRepository {
 
     Map<String, dynamic> body = user.toMap();
     body['password_confirmation'] = user.password;
+    body['is_admin'] = false;
 
     final response = await httpManager.request(
       url: endpoint,
@@ -53,7 +56,8 @@ class AuthRepository {
 
       return ApiResult<UserModel>(data: user);
     } else {
-      String message = response['error'] ?? "Não foi possível fazer o cadastro. Tente novamente!";
+      String message = response['error'] ??
+          "Não foi possível fazer o cadastro. Tente novamente!";
       return ApiResult<UserModel>(message: message, isError: true);
     }
   }
