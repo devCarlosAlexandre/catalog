@@ -1,61 +1,56 @@
-import 'package:catalog/app/models/categoria_model.dart';
-import 'package:catalog/app/models/comentario_model.dart';
 import 'dart:convert';
 
-class ProdutoModel{
-   int? id;
-  int? userId;
+class ProdutoModel {
+  int? id;
+  int? user_id;
   String? userName;
   int? categoriaId;
-  String? name;
+  String? nome;
   String? imagem;
   DateTime? createdAt;
- ProdutoModel({
+  ProdutoModel({
     this.id,
-    this.userId,
+    this.user_id,
     this.userName,
     this.categoriaId,
-    this.name,
+    this.nome,
     this.imagem,
-    
   });
 
   Map<String, dynamic> toMap() {
     return {
       'id': id,
-      'userId': userId,
+      'user_id': user_id,
       'userName': userName,
       'categoriaId': categoriaId,
-      'name': name,
+      'nome': nome,
       'imagem': imagem,
-      
     };
   }
 
   factory ProdutoModel.fromMap(Map<String, dynamic> map) {
     return ProdutoModel(
       id: map['id'],
-      userId: map['user_id'],
+      user_id: map['user_id'],
       userName: map['user_name'],
       categoriaId: map['categoria_id'],
-      name: map['name'],
-      
+      nome: map['nome'],
       imagem: map['imagem'],
-      
     );
   }
 
   static List<ProdutoModel> fromList(list) {
-    return List<ProdutoModel>.from(list.map((x) =>ProdutoModel.fromMap(x)));
+    return List<ProdutoModel>.from(list.map((x) => ProdutoModel.fromMap(x)));
   }
 
   String toJson() => json.encode(toMap());
 
-  factory ProdutoModel.fromJson(String source) =>ProdutoModel.fromMap(json.decode(source));
+  factory ProdutoModel.fromJson(String source) =>
+      ProdutoModel.fromMap(json.decode(source));
 
   @override
   String toString() {
-    return 'ProdutoModel(id: $id, userId: $userId, userName: $userName, categoriaId: $categoriaId, name: $name, imagem: $imagem, )';
+    return 'ProdutoModel(id: $id, user_id: $user_id, userName: $userName, categoriaId: $categoriaId, nome: $nome, imagem: $imagem, )';
   }
 
   @override
@@ -64,17 +59,20 @@ class ProdutoModel{
 
     return other is ProdutoModel &&
         other.id == id &&
-        other.userId == userId &&
+        other.user_id == user_id &&
         other.userName == userName &&
         other.categoriaId == categoriaId &&
-        other.name == name &&
-        other.imagem == imagem; 
-        
+        other.nome == nome &&
+        other.imagem == imagem;
   }
 
   @override
   int get hashCode {
-    return id.hashCode ^ userId.hashCode ^ userName.hashCode ^ categoriaId.hashCode ^ name.hashCode ^ imagem.hashCode ;
-}
-
+    return id.hashCode ^
+        user_id.hashCode ^
+        userName.hashCode ^
+        categoriaId.hashCode ^
+        nome.hashCode ^
+        imagem.hashCode;
+  }
 }

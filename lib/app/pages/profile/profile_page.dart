@@ -44,7 +44,7 @@ class ProfilePage extends StatelessWidget {
                     Text("${controller.user.email}", style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
                     const SizedBox(height: 16.0),
                     const Text("Administrador"),
-                    Text(controller.user.isAdmin! ? "Sim" : "Não", style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
+                    Text(controller.user.isAdmin != null ? "Sim" : "Não", style: const TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold)),
                   ],
                 ),
               ),

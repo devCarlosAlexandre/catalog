@@ -1,42 +1,32 @@
-
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 
-import '../../models/Produto_model.dart';
+class ProdutoWidget extends StatefulWidget {
+  final String? imagem;
+  final String? name;
 
-class ProdutoWidget extends StatelessWidget {
   const ProdutoWidget({
     super.key,
-    required this.model,
+    required this.imagem,
+    required this.name,
   });
 
-  final ProdutoModel model;
+  @override
+  State<ProdutoWidget> createState() => _ProdutoWidgetState();
+}
 
+class _ProdutoWidgetState extends State<ProdutoWidget> {
   @override
   Widget build(BuildContext context) {
     return Card(
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(6.0),
-            //child: Image.network("${model.photoPath}"),
-            child: CachedNetworkImage(
-              imageUrl: "${model.imagem}",
-              progressIndicatorBuilder: (context, url, downloadProgress) => CircularProgressIndicator(value: downloadProgress.progress),
-              errorWidget: (context, url, error) => const Icon(Icons.error),
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(6.0),
-            child: Text("${model.name}", style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w600)),
-          ),
+          ListTile(
+              leading: const CircleAvatar(
+                child:  Icon(Icons.photo),
+              ),
+              title: Text(widget.name ?? "")),
         ],
       ),
     );
   }
-  
-  
-  
-  
-} 
-
+}

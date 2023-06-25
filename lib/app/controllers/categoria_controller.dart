@@ -19,12 +19,12 @@ import 'auth_controller.dart';
     required this.appUtils,
   });
 
-  @override
-  void onInit() {
-    super.onInit();
+  // @override
+  // void onInit() {
+  //   super.onInit();
 
-    getCategories();
-  }
+  //   getCategories();
+  // }
 
   RxList<CategoriaModel> listCategories = RxList<CategoriaModel>([]);
   RxBool isLoading = false.obs;
