@@ -34,7 +34,6 @@ class ProdutoRepository {
       return ApiResult<List<ProdutoModel>>(message: message, isError: true);
     }
   }
-  
 
   Future<ApiResult<ProdutoModel>> getById(String token, int id) async {
     String endpoint = "${Url.base}/Produtos/$id";
@@ -55,6 +54,41 @@ class ProdutoRepository {
     } else {
       String message = response['error'] ??
           "Não foi possível buscar o produto. Tente novamente!";
+      return ApiResult<ProdutoModel>(message: message, isError: true);
+    }
+  }
+
+  Future<ApiResult<ProdutoModel>> createProduto(
+      {required String token,
+      required String name,
+      required int user_id,
+      required int category_id,
+      required String titulo,
+      required String descricao,
+      required String content,
+      required num preco}) async {
+    String endpoint = "${Url.base}/produto";
+
+    final response = await httpManager
+        .request(url: endpoint, method: HttpMethods.post, headers: {
+      'Authorization': 'Bearer $token',
+    }, body: {
+      "user_id": user_id,
+      "categoria_id": category_id,
+      "title": titulo,
+      "content": content,
+      "photo_path": "",
+      "valor": preco,
+      "descricao": descricao,
+      "nome": name,
+    });
+
+    if (response['data'] != null) {
+      ProdutoModel itens = ProdutoModel.fromMap(response['data']);
+      return ApiResult<ProdutoModel>(data: itens);
+    } else {
+      String message =
+          response['error'] ?? "Error ao criar produto Tente novamente!";
       return ApiResult<ProdutoModel>(message: message, isError: true);
     }
   }

@@ -27,6 +27,10 @@ class _FormProdutoState extends State<FormProduto> {
 // }
 
   final nameController = TextEditingController();
+  final precoController = TextEditingController();
+  final tituloController = TextEditingController();
+  final descricaoController = TextEditingController();
+  final contentController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -71,17 +75,22 @@ class _FormProdutoState extends State<FormProduto> {
                           ),
                           TextFieldWidget(
                             icon: Icons.abc,
-                            controller: nameController,
+                            controller: tituloController,
                             label: 'Titulo',
                           ),
                           TextFieldWidget(
                             icon: Icons.abc,
-                            controller: nameController,
+                            controller: contentController,
+                            label: 'Conteudo',
+                          ),
+                          TextFieldWidget(
+                            icon: Icons.abc,
+                            controller: descricaoController,
                             label: 'Descrição ',
                           ),
                           TextFieldWidget(
                             icon: Icons.abc,
-                            controller: nameController,
+                            controller: precoController,
                             textInputType: TextInputType.number,
                             label: 'Valor',
                           ),
@@ -102,8 +111,13 @@ class _FormProdutoState extends State<FormProduto> {
                             onPressed: controller.isLoading.value == true
                                 ? null
                                 : () {
-                                    // controller.createList(
-                                    //     name: nameController.text);
+                                    controller.createProduto(
+                                        name: nameController.text,
+                                        category_id: 5,
+                                        content: contentController.text,
+                                        descricao: descricaoController.text,
+                                        preco: num.parse(precoController.text),
+                                        titulo: tituloController.text);
                                   },
                             child: controller.isLoading.value == true
                                 ? const CircularProgressIndicator()
